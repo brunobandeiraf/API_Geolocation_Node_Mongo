@@ -1,10 +1,12 @@
 //import * as app from 'express';
-//import { UserModel } from './models';
+import { UserModel } from './repositories/models';
+import './db/database'; // Importa a configuração do banco de dados
 
 import express from 'express';
 import routes from './http/routes';
 
 import cors from 'cors';
+
 
 //const server = app();
 //const router = app.Router();

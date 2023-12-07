@@ -6,9 +6,9 @@ import * as sinon from 'sinon';
 import { faker } from '@faker-js/faker';
 import { expect, assert } from 'chai';
 
-import '../../lib/database';
+import '../../db/database';
 import { Region, RegionModel, UserModel } from '../../repositories/models';
-import GeoLib from '../../lib/lib';
+import GeoLib from '../../db/lib';
 import server from '../../server';
 
 describe('Models', () => {
