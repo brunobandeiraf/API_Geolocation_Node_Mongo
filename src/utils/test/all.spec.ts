@@ -1,15 +1,15 @@
 import 'reflect-metadata';
 
 import * as mongoose from 'mongoose';
-import * as supertest from 'supertest';
+import supertest from 'supertest';
 import * as sinon from 'sinon';
 import { faker } from '@faker-js/faker';
 import { expect, assert } from 'chai';
 
-import './database';
-import { Region, RegionModel, UserModel } from './models';
-import GeoLib from './lib';
-import server from './server';
+import '../../lib/database';
+import { Region, RegionModel, UserModel } from '../../repositories/models';
+import GeoLib from '../../lib/lib';
+import server from '../../server';
 
 describe('Models', () => {
   let user;

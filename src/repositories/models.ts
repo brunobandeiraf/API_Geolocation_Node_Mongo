@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import * as mongoose from 'mongoose';
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 import { pre, getModelForClass, Prop, Ref, modelOptions } from '@typegoose/typegoose';
-import lib from './lib';
+import lib from '../lib/lib';
 
 import ObjectId = mongoose.Types.ObjectId;
 
@@ -25,6 +25,7 @@ class Base extends TimeStamps {
 
   next();
 })
+
 export class User extends Base {
   @Prop({ required: true })
   name!: string;

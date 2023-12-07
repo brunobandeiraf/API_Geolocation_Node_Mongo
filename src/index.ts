@@ -1,1 +1,1 @@
-import './database';
+import './lib/database';

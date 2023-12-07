@@ -1,64 +1,67 @@
-import * as app from 'express';
-import { UserModel } from './models';
+//import * as app from 'express';
+//import { UserModel } from './models';
 
-const server = app();
-const router = app.Router();
+import express from 'express';
+import routes from './http/routes';
 
-const STATUS = {
-  OK: 200,
-  CREATED: 201,
-  UPDATED: 201,
-  NOT_FOUND: 400,
-  BAD_REQUEST: 400,
-  INTERNAL_SERVER_ERROR: 500,
-  DEFAULT_ERROR: 418,
-};
+import cors from 'cors';
 
-router.get('/user', async (req, res) => {
-  const { page, limit } = req.query;
+//const server = app();
+//const router = app.Router();
+const server = express()
+server.use(express.json())
 
-  const [users, total] = await Promise.all([
-    UserModel.find().lean(),
-    UserModel.count(),
-  ]);
+server.use(routes)
+server.use(cors())
 
-  return res.json({
-    rows: users,
-    page,
-    limit,
-    total,
-  });
-});
 
-router.get('/users/:id', async (req, res) => {
-  const { id } = req.params;
+// router.get('/user', async (req, res) => {
+//   const { page, limit } = req.query;
 
-  const user = await UserModel.findOne({ _id: id }).lean();
+//   const [users, total] = await Promise.all([
+//     UserModel.find().lean(),
+//     UserModel.count(),
+//   ]);
 
-  if (!user) {
-    res.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Region not found' });
-  }
+//   return res.json({
+//     rows: users,
+//     page,
+//     limit,
+//     total,
+//   });
+// });
 
-  return user;
-});
+// router.get('/users/:id', async (req, res) => {
+//   const { id } = req.params;
 
-router.put('/users/:id', async (req, res) => {
-  const { id } = req.params;
-  const { update } = req.body;
+//   const user = await UserModel.findOne({ _id: id }).lean();
 
-  const user = await UserModel.findOne({ _id: id }).lean();
+//   if (!user) {
+//     res.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Region not found' });
+//   }
 
-  if (!user) {
-    res.status(STATUS.DEFAULT_ERROR).json({ message: 'Region not found' });
-  }
+//   return user;
+// });
 
-  user.name = update.name;
+// router.put('/users/:id', async (req, res) => {
+//   const { id } = req.params;
+//   const { update } = req.body;
 
-  await user.save();
+//   const user = await UserModel.findOne({ _id: id }).lean();
 
-  return res.sendStatus(201);
-});
+//   if (!user) {
+//     res.status(STATUS.DEFAULT_ERROR).json({ message: 'Region not found' });
+//   }
 
-server.use(router);
+//   user.name = update.name;
 
-export default server.listen(3003);
+//   await user.save();
+
+//   return res.sendStatus(201);
+// });
+
+//server.use(router);
+//export default server.listen(3003);
+
+const PORT = 3003
+export default server.listen(PORT, () => console.log(`Server is running on Port ${PORT}`))
