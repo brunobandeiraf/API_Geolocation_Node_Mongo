@@ -5,8 +5,10 @@ const usersRoutes = Router();
 const usersController = new UsersController();
 
 // Rotas
-usersRoutes.get('/user', usersController.show);
-usersRoutes.get('/users/:id', usersController.findOne);
-//usersRoutes.put('/users/:id', usersController.update);
+usersRoutes.post('/create', usersController.create);
+usersRoutes.get('/users', usersController.show);
+usersRoutes.get('/user/:id', usersController.findOne);
+usersRoutes.put('/update/:id', usersController.update);
+usersRoutes.delete('/delete/:id', usersController.delete);
 
 export default usersRoutes;
