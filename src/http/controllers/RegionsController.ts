@@ -68,74 +68,74 @@ class RegionsController {
         }
     }
 
-    // async findOne(request: Request, response: Response)  {
-    //     // route GET users/user/:id
+    async findOne(request: Request, response: Response)  {
+        // route GET regions/region/:id
 
-    //     try {
-    //         const { id } = request.params;
+        try {
+            const { id } = request.params;
 
-    //         const user = await UserModel.findOne({ _id: id }).lean();
+            const region = await RegionModel.findOne({ _id: id }).lean();
 
-    //         if (!user) {
-    //             return response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'User not found' });
-    //         }
+            if (!region) {
+                return response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Region not found' });
+            }
 
-    //         return response.status(STATUS.OK).json(user);
+            return response.status(STATUS.OK).json(region);
 
-    //     } catch (error) {
-    //         console.error('Error when searching for user :', error);
-    //         return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Unexpected error' });
-    //     }
-    // }
+        } catch (error) {
+            console.error('Error when searching for region :', error);
+            return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Unexpected error' });
+        }
+    }
 
-    // async update(request, response){
-    //     // route PUT users/user/:id
+    async update(request: Request, response: Response){
+        // route PUT regions/update/:id
 
-    //     try{
-    //         const { id } = request.params;
-    //         const { name, email, address, coordinates } = request.body;
-
-    //         const user = await UserModel.findById(id).lean();
-
-    //         if (!user) {
-    //             return response.status(STATUS.DEFAULT_ERROR).json({ message: 'User not found' });
-    //         }
-
-    //         // Atualiza as propriedades do usuário com base nos dados fornecidos
-    //         if (name) user.name = name;
-    //         if (email) user.email = email;
-    //         if (address) user.address = address;
-    //         if (coordinates) user.coordinates = coordinates;
-
-    //         // Atualiza diretamente no banco de dados
-    //         await UserModel.updateOne({ _id: id }, { $set: user });
-
-    //         return response.status(STATUS.UPDATED).json({ message: 'User updated successfully', user });
-
-    //     }catch (err) { 
-    //         console.error('Error updating user:', err);
-    //         return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Unexpected error' });
-    //     }
-    // }
-
-    // async delete(request: Request, response: Response)  {
-    //     // route DELETE users/delete/:id
-
-    //     const userId = request.params.id;
-      
-    //     try {
-    //         const deletedUser = await UserModel.findByIdAndDelete(userId);
+        try {
+            const { id } = request.params;
+            const { name, userID } = request.body;
         
-    //         if (!deletedUser) 
-    //             return response.status(STATUS.NOT_FOUND).json({ message: 'User not found' });
-          
-    //         return response.status(STATUS.OK).json({ message: 'User deleted successfully', deletedUser });
+            // Verifique se a região com o ID fornecido existe
+            const existingRegion = await RegionModel.findById(id);
+        
+            if (!existingRegion) {
+              return response.status(STATUS.NOT_FOUND).json({ message: 'Region not found' });
+            }
+        
+            // Se deseja atualizar
+            if (name) existingRegion.name = name;
+            if (userID) existingRegion.user = userID;
+            // Atualize o nome da região
+            //existingRegion.name = name;
+        
+            // Salve a região atualizada
+            await existingRegion.save();
+        
+            return response.status(STATUS.UPDATED).json({ message: 'Region updated successfully', region: existingRegion });
+        } catch (error) {
+            console.error('Error updating region:', error);
+            return response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
+        }
+    }
 
-    //     } catch (error) {
-    //       console.error('Error deleting user:', error);
-    //       response.status(500).json({ message: 'Internal server error' });
-    //     }
-    //   }
+    async delete(request: Request, response: Response)  {
+        // route DELETE regions/delete/:id
+
+        const regionId = request.params.id;
+      
+        try {
+            const deletedRegion = await RegionModel.findByIdAndDelete(regionId);
+        
+            if (!deletedRegion) 
+                return response.status(STATUS.NOT_FOUND).json({ message: 'Region not found' });
+          
+            return response.status(STATUS.OK).json({ message: 'User deleted successfully', deletedRegion });
+
+        } catch (error) {
+          console.error('Error deleting region:', error);
+          response.status(500).json({ message: 'Internal server error' });
+        }
+    }
 
 }
 
