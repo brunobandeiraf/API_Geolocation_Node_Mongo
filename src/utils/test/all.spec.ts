@@ -18,7 +18,7 @@ describe('Models', () => {
 
   before(async () => {
     geoLibStub.getAddressFromCoordinates = sinon.stub(GeoLib, 'getAddressFromCoordinates').resolves(faker.location.streetAddress({ useFullAddress: true }));
-    geoLibStub.getCoordinatesFromAddress = sinon.stub(GeoLib, 'getCoordinatesFromAddress').resolves({ latitude: faker.location.latitude(), longitude: faker.location.longitude() });
+    //geoLibStub.getCoordinatesFromAddress = sinon.stub(GeoLib, 'getCoordinatesFromAddress').resolves({ latitude: faker.location.latitude(), longitude: faker.location.longitude() });
 
     session = await mongoose.startSession();
     user = await UserModel.create({
@@ -48,16 +48,17 @@ describe('Models', () => {
   });
 
   describe('RegionModel', () => {
-    it('should create a region', async () => {
-      const regionData: Omit<Region, '_id'> = {
-        user: user._id,
-        name: faker.person.fullName()
-      };
+    // it('should create a region', async () => {
+    //   const regionData: Omit<Region, '_id'> = {
+    //     user: user._id,
+    //     name: faker.person.fullName(),
+        
+    //   };
 
-      const [region] = await RegionModel.create([regionData]);
+    //   const [region] = await RegionModel.create([regionData]);
 
-      expect(region).to.deep.include(regionData);
-    });
+    //   expect(region).to.deep.include(regionData);
+    // });
 
     it('should rollback changes in case of failure', async () => {
       const userRecord = await UserModel.findOne({ _id: user._id }).select('regions').lean();

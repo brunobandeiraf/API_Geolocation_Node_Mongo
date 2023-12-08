@@ -21,12 +21,20 @@ class RegionsController {
     async create(request: Request, response: Response){
         // route POST region/create
         try {
-            const { name, user } = request.body;
+            const { name, user, coordinates } = request.body;
 
+            // Verifique se já existe uma região com o mesmo nome e coordenadas do usuário informado
+            const existingRegion = await RegionModel.findOne({ user, name, coordinates });
+
+            if (existingRegion) {
+                return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Region with the same name and coordinates already exists for the informed user' });
+            }
+            
             // Crie uma nova instância de Region
             const newRegion = new RegionModel({
                 name,
                 user,
+                ...( coordinates && { coordinates: coordinates }),
             });
 
             // A lógica de pré-salvamento será acionada automaticamente para gerar o _id e associar à User
@@ -93,7 +101,7 @@ class RegionsController {
 
         try {
             const { id } = request.params;
-            const { name, userID } = request.body;
+            const { name, userID, coordinates} = request.body;
         
             // Verifique se a região com o ID fornecido existe
             const existingRegion = await RegionModel.findById(id);
@@ -101,13 +109,26 @@ class RegionsController {
             if (!existingRegion) {
               return response.status(STATUS.NOT_FOUND).json({ message: 'Region not found' });
             }
+            
+            // Verifique se já existe uma região com o mesmo nome e coordenadas (exceto a região atual) para o mesmo user
+            if (name || coordinates || userID) {
+                const duplicateRegion = await RegionModel.findOne({
+                    _id: { $ne: id },
+                    name,
+                    coordinates,
+                    user: userID,
+                  });
         
+                if (duplicateRegion) {
+                    return response.status(STATUS.NOT_FOUND).json({ message: 'Region with the same name and coordinates already exists for the user' });
+                }
+            }
+            
             // Se deseja atualizar
             if (name) existingRegion.name = name;
             if (userID) existingRegion.user = userID;
-            // Atualize o nome da região
-            //existingRegion.name = name;
-        
+            if (coordinates) existingRegion.coordinates = coordinates;
+              
             // Salve a região atualizada
             await existingRegion.save();
         

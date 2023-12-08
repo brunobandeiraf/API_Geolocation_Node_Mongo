@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UserModel, User } from '../../repositories/models';
+import { UserModel } from '../../repositories/models';
 import GeoLocationService from '../../service/GeoLocationService';
 
 const STATUS = {

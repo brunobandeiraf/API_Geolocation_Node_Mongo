@@ -99,6 +99,13 @@ export class Region extends Base {
   @Prop({ required: true })
   name!: string;
 
+  @Prop({ required: false})
+  //coordinates: [number, number];
+  coordinates: {
+    latitude: { type: Number },
+    longitude: { type: Number },
+  }
+  
   @Prop({ ref: () => User, required: true, type: () => String })
   user: Ref<User>;
 }
