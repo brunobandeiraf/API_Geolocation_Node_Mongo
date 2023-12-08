@@ -6,8 +6,8 @@ const usersController = new UsersController();
 
 // Rotas
 usersRoutes.post('/create', usersController.create);
-usersRoutes.get('/users', usersController.show);
-usersRoutes.get('/user/:id', usersController.findOne);
+usersRoutes.get('/user', usersController.show);
+usersRoutes.get('/users/:id', usersController.findOne);
 usersRoutes.put('/update/:id', usersController.update);
 usersRoutes.delete('/delete/:id', usersController.delete);
 

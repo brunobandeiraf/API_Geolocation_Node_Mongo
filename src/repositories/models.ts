@@ -7,6 +7,17 @@ import lib from '../db/lib';
 
 import ObjectId = mongoose.Types.ObjectId;
 
+interface Coordinates {
+  latitude: number;
+  longitude: number;
+}
+
+interface Address {
+  street: string;
+  city: string;
+  zipCode: string;
+}
+
 class Base extends TimeStamps {
   @Prop({ required: true, default: () => (new ObjectId()).toString() })
   _id: string;
@@ -22,9 +33,9 @@ class Base extends TimeStamps {
 //   if (region.isModified('coordinates')) {
 //     region.address = await lib.getAddressFromCoordinates(region.coordinates);
 //   } else if (region.isModified('address')) {
-//     const { lat, lng } = await lib.getCoordinatesFromAddress(region.address);
+//     const { latitude, longitude } = await lib.getCoordinatesFromAddress(region.address);
 
-//     region.coordinates = [lng, lat];
+//     region.coordinates = [latitude, longitude];
 //   }
 
 //   next();
@@ -37,11 +48,22 @@ export class User extends Base {
   @Prop({ required: true })
   email!: string;
 
-  @Prop({ required: true })
-  address: string;
+  //@Prop({ required: true })
+  @Prop({ required: false })
+  //address: string;
+  address: {
+    street: { type: String },
+    city: { type: String },
+    zipCode: { type: String },
+  }
 
-  @Prop({ required: true, type: () => [Number] })
-  coordinates: [number, number];
+  //@Prop({ required: true, type: () => [Number] })
+  @Prop({ required: false})
+  //coordinates: [number, number];
+  coordinates: {
+    latitude: { type: Number },
+    longitude: { type: Number },
+  }
 
   @Prop({ required: true, default: [], ref: () => Region, type: () => String })
   regions: Ref<Region>[];

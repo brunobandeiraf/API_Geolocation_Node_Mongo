@@ -18,7 +18,7 @@ describe('Models', () => {
 
   before(async () => {
     geoLibStub.getAddressFromCoordinates = sinon.stub(GeoLib, 'getAddressFromCoordinates').resolves(faker.location.streetAddress({ useFullAddress: true }));
-    geoLibStub.getCoordinatesFromAddress = sinon.stub(GeoLib, 'getCoordinatesFromAddress').resolves({ lat: faker.location.latitude(), lng: faker.location.longitude() });
+    geoLibStub.getCoordinatesFromAddress = sinon.stub(GeoLib, 'getCoordinatesFromAddress').resolves({ latitude: faker.location.latitude(), longitude: faker.location.longitude() });
 
     session = await mongoose.startSession();
     user = await UserModel.create({
