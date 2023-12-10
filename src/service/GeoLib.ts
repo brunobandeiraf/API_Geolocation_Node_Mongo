@@ -1,4 +1,3 @@
-// services/GeoLocationService.ts
 import axios from 'axios';
 
 interface GeoLocationResponse {
@@ -13,6 +12,7 @@ interface GeoLocationResponse {
 
 class GeoLocationService {
   private apiKey: string;
+  static resolveLocation: any;
 
   constructor(apiKey: string) {
     this.apiKey = apiKey;

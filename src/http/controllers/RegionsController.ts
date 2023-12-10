@@ -11,10 +11,8 @@ const STATUS = {
     DEFAULT_ERROR: 418,
 };
 
-interface Coordinates {
-    latitude: number;
-    longitude: number;
-}
+// Raio da Terra em quilômetros
+const EARTH_RADIUS = 6371; 
 
 class RegionsController {
 
@@ -155,6 +153,69 @@ class RegionsController {
         } catch (error) {
           console.error('Error deleting region:', error);
           response.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
+    async listRegionsContainingPoint(request: Request, response: Response){
+        // route GET regions/regionslist
+        try {
+            const { latitude, longitude } = request.body;
+
+            if (!latitude || !longitude) {
+                return response.status(STATUS.NOT_FOUND).json({ message: 'Latitude and longitude are required parameters.' });
+            }
+
+            const point = {
+                coordinates: {
+                    latitude: parseFloat(latitude as string),
+                    longitude: parseFloat(longitude as string),
+                },
+            };
+        
+            const regionsContainingPoint = await RegionModel.find({
+                'coordinates.latitude': point.coordinates.latitude,
+                'coordinates.longitude': point.coordinates.longitude,
+            }).lean();
+    
+        
+            if (regionsContainingPoint.length === 0)
+                response.status(STATUS.NOT_FOUND).json({ message: 'No regions found at the specified point.' });
+            
+            response.status(STATUS.OK).json({ regions: regionsContainingPoint });
+
+
+        } catch (error) {
+            console.error('Error listing regions containing point:', error);
+            response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
+        }
+    }
+
+    async listRegionsWithinDistance(request: Request, response: Response) {
+        try {
+            const { latitude, longitude, distance } = request.body;
+
+            if (!latitude || !longitude || !distance)
+                return response.status(STATUS.NOT_FOUND).json({ message: 'Latitude, longitude, and distance are required parameters.' });
+
+            const regionsWithinDistance = await RegionModel.find({
+                coordinates: {
+                    $geoWithin: { // Método $geoWithin do MongoDB busca regiões dentro de uma distância especificada. 
+                        $centerSphere: [
+                            [parseFloat(longitude), parseFloat(latitude)],
+                            distance / EARTH_RADIUS,
+                        ],
+                    },
+                },
+            }).populate('user').lean();
+    
+            if (regionsWithinDistance.length === 0)
+                return response.status(STATUS.NOT_FOUND).json({ message: 'No regions found at the specified point.' });
+            
+            return response.status(STATUS.OK).json({ regions: regionsWithinDistance });
+
+        } catch (error) {
+            console.error('Error listing regions within distance:', error);
+            response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
     }
 
