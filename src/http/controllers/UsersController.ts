@@ -23,7 +23,7 @@ class UsersController {
 
       // Verifica se foram fornecidos ambos ou nenhum endereço/coordenadas
       if ((!address && !coordinates) || (address && coordinates))
-        return response.status(400).json({ message: 'Provide only address or coordinates, not both or neither.' });
+        return response.status(STATUS.BAD_REQUEST).json({ message: 'Provide only address or coordinates, not both or neither.' });
 
       const geoLocationService = new GeoLocationService(apiKey);
       const resolvedLocation = await geoLocationService.resolveLocation({ address, coordinates });
@@ -40,7 +40,7 @@ class UsersController {
       return response.status(STATUS.CREATED).json({ message: 'User created successfully', user });
 
     } catch (error) {
-      console.error('Error creating user:', error);
+      //console.error('Error creating user:', error);
       return response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Unexpected error' });
     }
   }
@@ -49,7 +49,7 @@ class UsersController {
     //route GET users/show
 
     try {
-      const { page, limit } = request.query;
+      const { page , limit} = request.query;
 
       const [users, total] = await Promise.all([
         UserModel.find().lean(),
@@ -68,7 +68,7 @@ class UsersController {
       });
 
     } catch (error) {
-      console.error('Error when searching for users:', error);
+      //console.error('Error when searching for users:', error);
       return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Unexpected error' });
     }
   }
@@ -88,7 +88,7 @@ class UsersController {
       return response.status(STATUS.OK).json(user);
 
     } catch (error) {
-      console.error('Error when searching for user :', error);
+      //console.error('Error when searching for user :', error);
       return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Unexpected error' });
     }
   }
@@ -123,7 +123,7 @@ class UsersController {
       return response.status(STATUS.UPDATED).json({ message: 'User updated successfully', updatedUser });
 
     } catch (error) {
-      console.error('Error updating user:', error);
+      //console.error('Error updating user:', error);
       return response.status(500).json({ message: 'Unexpected error' });
     }
   }
@@ -142,7 +142,7 @@ class UsersController {
       return response.status(STATUS.OK).json({ message: 'User deleted successfully', deletedUser });
 
     } catch (error) {
-      console.error('Error deleting user:', error);
+      //console.error('Error deleting user:', error);
       response.status(500).json({ message: 'Internal server error' });
     }
   }

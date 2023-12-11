@@ -41,7 +41,7 @@ class RegionsController {
             response.status(STATUS.CREATED).json({ message: 'Region created successfully', region: newRegion });
           
         } catch (error) {
-            console.error('Error creating region:', error);
+            //console.error('Error creating region:', error);
             response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
     }
@@ -69,7 +69,7 @@ class RegionsController {
             });
 
         } catch (error) {
-            console.error('Error when searching for regions:', error);
+            //console.error('Error when searching for regions:', error);
             return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Unexpected error' });
         }
     }
@@ -89,7 +89,7 @@ class RegionsController {
             return response.status(STATUS.OK).json(region);
 
         } catch (error) {
-            console.error('Error when searching for region :', error);
+            //console.error('Error when searching for region :', error);
             return response.status(STATUS.DEFAULT_ERROR).json({ message: 'Unexpected error' });
         }
     }
@@ -132,7 +132,7 @@ class RegionsController {
         
             return response.status(STATUS.UPDATED).json({ message: 'Region updated successfully', region: existingRegion });
         } catch (error) {
-            console.error('Error updating region:', error);
+            //console.error('Error updating region:', error);
             return response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
     }
@@ -151,7 +151,7 @@ class RegionsController {
             return response.status(STATUS.OK).json({ message: 'User deleted successfully', deletedRegion });
 
         } catch (error) {
-          console.error('Error deleting region:', error);
+          //console.error('Error deleting region:', error);
           response.status(500).json({ message: 'Internal server error' });
         }
     }
@@ -185,7 +185,7 @@ class RegionsController {
 
 
         } catch (error) {
-            console.error('Error listing regions containing point:', error);
+            //console.error('Error listing regions containing point:', error);
             response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
     }
@@ -214,7 +214,7 @@ class RegionsController {
             return response.status(STATUS.OK).json({ regions: regionsWithinDistance });
 
         } catch (error) {
-            console.error('Error listing regions within distance:', error);
+            //console.error('Error listing regions within distance:', error);
             response.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
     }
