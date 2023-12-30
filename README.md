@@ -89,3 +89,9 @@ Melhoria:
 ---
 
 Estamos ansiosos para ver sua implementação e criatividade em ação! Boa sorte e que a força do código esteja com você! 🚀
+
+---
+yarn add eslint -D
+uarn eslint --init
+
+yarn add express-async-errors --save
