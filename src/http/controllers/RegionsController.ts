@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { RegionModel } from '../../repositories/models';
 import AppError from '../../utils/error/AppError';
 import HttpStatus from '../../utils/error/HttpStatus';
+import logger from '../../utils/logs/logger'
 
 // Raio da Terra em quilômetros
 const EARTH_RADIUS = 6371; 
@@ -17,6 +18,7 @@ class RegionsController {
             const existingRegion = await RegionModel.findOne({ user, name, coordinates });
 
             if (existingRegion) {
+                logger.warn({ message: 'Region with the same name and coordinates already exists for the informed user', route: '/regions/create' });
                 //throw new AppError("Region with the same name and coordinates already exists for the informed user.", HttpStatus.DEFAULT_ERROR)
                 return response.status(HttpStatus.DEFAULT_ERROR).json({ message: 'Region with the same name and coordinates already exists for the informed user' });
             }
@@ -31,9 +33,11 @@ class RegionsController {
             // A lógica de pré-salvamento será acionada automaticamente para gerar o _id e associar à User
             await newRegion.save();
             
+            logger.info({ message: 'Region created successfully', route: '/regions/create' });
             response.status(HttpStatus.CREATED).json({ message: 'Region created successfully', region: newRegion });
           
         } catch (error) {
+            logger.error({ message: 'Internal server error', route: '/regions/create' });
             //throw new AppError("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR)
             response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
@@ -51,10 +55,12 @@ class RegionsController {
             ]);
 
             if (total === undefined) {
+                logger.warn({ message: 'Failed to count regions', route: '/regions/show' });
                 //throw new AppError("Failed to count regions.", HttpStatus.DEFAULT_ERROR)
                 return response.status(HttpStatus.DEFAULT_ERROR).json({ message: 'Failed to count regions' });
             }
 
+            logger.info({ message: 'Listed regions.', route: '/regions/show' });
             return response.status(HttpStatus.OK).json({
                 rows: regions,
                 page,
@@ -63,6 +69,7 @@ class RegionsController {
             });
 
         } catch (error) {
+            logger.error({ message: 'Internal server error', route: '/regions/show' });
             //throw new AppError("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR)
             response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
@@ -77,13 +84,16 @@ class RegionsController {
             const region = await RegionModel.findOne({ _id: id }).lean();
 
             if (!region) {
+                logger.warn({ message: 'Region not found.', route: '/regions/id' });
                 //throw new AppError("Region not found.", HttpStatus.NOT_FOUND)
                 return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Region not found' });
             }
 
+            logger.info({ message: 'Region found', route: '/regions/id' });
             return response.status(HttpStatus.OK).json(region);
 
         } catch (error) {
+            logger.error({ message: 'Internal server error', route: '/regions/id' });
             //throw new AppError("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR)
             response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
@@ -100,6 +110,7 @@ class RegionsController {
             const existingRegion = await RegionModel.findById(id);
         
             if (!existingRegion) {
+                logger.warn({ message: 'Region not found', route: '/regions/id - PUT' });
                 //throw new AppError("Region not found.", HttpStatus.NOT_FOUND)
                 return response.status(HttpStatus.NOT_FOUND).json({ message: 'Region not found' });
             }
@@ -114,6 +125,7 @@ class RegionsController {
                   });
         
                 if (duplicateRegion) {
+                    logger.warn({ message: 'Region with the same name and coordinates already exists for the user', route: '/regions/id - PUT' });
                     //throw new AppError("Region with the same name and coordinates already exists for the user.", HttpStatus.NOT_FOUND)
                     return response.status(HttpStatus.NOT_FOUND).json({ message: 'Region with the same name and coordinates already exists for the user' });
                 }
@@ -127,8 +139,10 @@ class RegionsController {
             // Salve a região atualizada
             await existingRegion.save();
         
+            logger.info({ message: 'Region updated successfully', route: '/regions/id - PUT' });
             return response.status(HttpStatus.UPDATED).json({ message: 'Region updated successfully', region: existingRegion });
         } catch (error) {
+            logger.error({ message: 'Internal server error.', route: '/regions/id - PUT' });
             //throw new AppError("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR)
             response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
@@ -142,13 +156,17 @@ class RegionsController {
         try {
             const deletedRegion = await RegionModel.findByIdAndDelete(regionId);
         
-            if (!deletedRegion) 
+            if (!deletedRegion){
+                logger.warn({ message: 'Region not found', route: '/regions/delete/id' });
                 //throw new AppError("Region not found.", HttpStatus.NOT_FOUND)
                 return response.status(HttpStatus.NOT_FOUND).json({ message: 'Region not found' });
-          
+            }
+
+            logger.info({ message: 'User deleted successfully', route: '/regions/delete/id' });
             return response.status(HttpStatus.OK).json({ message: 'User deleted successfully', deletedRegion });
 
         } catch (error) {
+            logger.error({ message: 'Internal server error', route: '/regions/delete/id' });
             //throw new AppError("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR)
             response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
@@ -160,8 +178,9 @@ class RegionsController {
             const { latitude, longitude } = request.body;
 
             if (!latitude || !longitude) {
+                logger.warn({ message: 'Latitude and longitude are required parameters', route: '/regions/regionslist' });
                 //throw new AppError("Latitude and longitude are required parameters.", HttpStatus.NOT_FOUND)
-                return response.status(HttpStatus.NOT_FOUND).json({ message: 'Latitude and longitude are required parameters.' });
+                return response.status(HttpStatus.NOT_FOUND).json({ message: 'Latitude and longitude are required parameters' });
             }
 
             const point = {
@@ -177,14 +196,18 @@ class RegionsController {
             }).lean();
     
         
-            if (regionsContainingPoint.length === 0)
+            if (regionsContainingPoint.length === 0){
+                logger.warn({ message: 'No regions found at the specified point', route: '/regions/regionslist' });
                 //throw new AppError("No regions found at the specified point.", HttpStatus.NOT_FOUND)
-                response.status(HttpStatus.NOT_FOUND).json({ message: 'No regions found at the specified point.' });
-            
-            response.status(HttpStatus.OK).json({ regions: regionsContainingPoint });
+                response.status(HttpStatus.NOT_FOUND).json({ message: 'No regions found at the specified point' });
+            }
+
+            logger.info({ message: 'List regions containing point successfully', route: '/regions/regionslist' });
+            return response.status(HttpStatus.OK).json({ regions: regionsContainingPoint });
 
 
         } catch (error) {
+            logger.error({ message: 'Internal server error', route: '/regions/regionslist' });
             //throw new AppError("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR)
             response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }
@@ -194,10 +217,11 @@ class RegionsController {
         try {
             const { latitude, longitude, distance } = request.body;
 
-            if (!latitude || !longitude || !distance)
+            if (!latitude || !longitude || !distance){
+                logger.warn({ message: 'Latitude, longitude, and distance are required parameters', route: '/regions/regionsdistance' });
                 //throw new AppError("Latitude, longitude, and distance are required parameters.", HttpStatus.NOT_FOUND)
-                return response.status(HttpStatus.NOT_FOUND).json({ message: 'Latitude, longitude, and distance are required parameters.' });
-
+                return response.status(HttpStatus.NOT_FOUND).json({ message: 'Latitude, longitude, and distance are required parameters' });
+            }
             // O código realiza uma consulta ao banco de dados MongoDB para encontrar regiões dentro de uma determinada distância geográfica 
             // a partir de um ponto especificado (definido por latitude e longitude). 
             const regionsWithinDistance = await RegionModel.find({
@@ -211,13 +235,17 @@ class RegionsController {
                 },
             }).populate('user').lean();
     
-            if (regionsWithinDistance.length === 0)
+            if (regionsWithinDistance.length === 0){
+                logger.warn({ message: 'No regions found at the specified point', route: '/regions/regionsdistance' });
                 //throw new AppError("No regions found at the specified point.", HttpStatus.NOT_FOUND)
-                return response.status(HttpStatus.NOT_FOUND).json({ message: 'No regions found at the specified point.' });
-            
+                return response.status(HttpStatus.NOT_FOUND).json({ message: 'No regions found at the specified point' });
+            }
+
+            logger.info({ message: 'List regions within distance successfully', route: '/regions/regionsdistance' });
             return response.status(HttpStatus.OK).json({ regions: regionsWithinDistance });
 
         } catch (error) {
+            logger.error({ message: 'Internal server error', route: '/regions/regionsdistance' });
             //throw new AppError("Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR)
             response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
         }

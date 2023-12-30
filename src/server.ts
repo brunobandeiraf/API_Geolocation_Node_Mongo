@@ -1,6 +1,7 @@
 //import { UserModel } from './repositories/models';
 import 'express-async-errors';
 import { env } from './env' ;
+import logger from './utils/logs/logger'
 
 // import { Request, Response, NextFunction } from 'express';
 // import AppError from '../src/utils/error/AppError'
@@ -36,4 +37,5 @@ server.use(routes)
 // });
 
 const PORT = env.PORT
-export default server.listen(PORT, () => console.log(`Server is running on Port ${PORT}`))
+export default server.listen(PORT, () => logger.info(`Server is running on Port ${PORT}`))
+//export default server.listen(PORT, () => console.log(`Server is running on Port ${PORT}`))
