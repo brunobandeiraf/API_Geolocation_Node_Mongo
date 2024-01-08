@@ -52,7 +52,7 @@
 //       const regionData: Omit<Region, '_id'> = {
 //         user: user._id,
 //         name: faker.person.fullName(),
-        
+
 //       };
 
 //       const [region] = await RegionModel.create([regionData]);

@@ -1,11 +1,11 @@
-import fs from 'fs';
-import { createLogger, format, transports } from 'winston';
+import fs from 'fs'
+import { createLogger, format, transports } from 'winston'
 
-const env = process.env.NODE_ENV;
-const logsDir = 'logs';
+const env = process.env.NODE_ENV
+const logsDir = 'logs'
 
 if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir);
+  fs.mkdirSync(logsDir)
 }
 
 const logger = createLogger({
@@ -14,22 +14,22 @@ const logger = createLogger({
     format.timestamp({
       format: 'YYYY-MM-DD HH:mm:ss',
     }),
-    //format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
+    // format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
     format.printf((info) => {
-      const routeInfo = info.route ? ` [${info.route}]` : '';
-      return `${info.timestamp} ${info.level}:${routeInfo} ${info.message}`;
-    })
+      const routeInfo = info.route ? ` [${info.route}]` : ''
+      return `${info.timestamp} ${info.level}:${routeInfo} ${info.message}`
+    }),
   ),
   transports: [
     new transports.Console({
       level: 'info',
       format: format.combine(
         format.colorize(),
-        //format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
+        // format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
         format.printf((info) => {
-          const routeInfo = info.route ? ` [${info.route}]` : '';
-          return `${info.timestamp} ${info.level}:${routeInfo} ${info.message}`;
-        })
+          const routeInfo = info.route ? ` [${info.route}]` : ''
+          return `${info.timestamp} ${info.level}:${routeInfo} ${info.message}`
+        }),
       ),
     }),
     new transports.File({
@@ -38,6 +38,6 @@ const logger = createLogger({
       filename: `${__dirname}/winston/info-logs-api.log`,
     }),
   ],
-});
+})
 
-export default logger;
+export default logger

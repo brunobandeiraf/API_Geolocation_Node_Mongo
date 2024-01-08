@@ -1,12 +1,299 @@
-2023-12-30 13:41:01 info: Server is running on Port 3003
-2023-12-30 13:41:39 info: Server is running on Port 3003
-2023-12-30 13:41:51 info: Server is running on Port 3003
-2023-12-30 13:41:53 info: Server is running on Port 3003
-2023-12-30 13:42:00 info: Show users
-2023-12-30 13:42:23 warn: User not found.
-2023-12-30 13:42:37 info: User found
-2023-12-30 13:43:02 info: Server is running on Port 3003
-2023-12-30 13:43:26 info: Server is running on Port 3003
-2023-12-30 13:43:30 info: Server is running on Port 3003
-2023-12-30 13:48:38 info: Server is running on Port 3003
-2023-12-30 13:48:43 info: [/users/show] Listed users
+2023-12-30 16:15:30 info: Server is running on Port 3003
+2023-12-30 16:15:39 info: [/users/show] Listed users
+2023-12-30 16:16:00 info: [/users/id] User found
+2023-12-30 16:16:13 warn: [/users/id] User not found
+2023-12-30 16:16:13 error: [/users/id] Unexpected error
+2023-12-30 16:18:50 info: Server is running on Port 3003
+2023-12-30 16:18:54 warn: [/users/id] User not found
+2023-12-30 16:18:54 error: [/users/id] Unexpected error
+2023-12-30 16:22:22 info: Server is running on Port 3003
+2023-12-30 16:22:34 warn: [/users/id] User not found
+2023-12-30 16:22:34 error: [/users/id] Unexpected error
+2023-12-30 16:22:37 info: [/users/show] Listed users
+2023-12-30 16:22:40 warn: [/users/id] User not found
+2023-12-30 16:22:40 error: [/users/id] Unexpected error
+2023-12-30 16:24:41 info: Server is running on Port 3003
+2023-12-30 16:24:48 info: Server is running on Port 3003
+2023-12-30 16:26:28 info: Server is running on Port 3003
+2023-12-30 16:26:30 info: Server is running on Port 3003
+2023-12-30 16:26:46 info: [/users/show] Listed users
+2023-12-30 16:27:00 info: Server is running on Port 3003
+2023-12-30 16:27:06 info: Server is running on Port 3003
+2023-12-30 16:27:17 info: Server is running on Port 3003
+2023-12-30 16:27:19 info: Server is running on Port 3003
+2023-12-30 16:27:39 info: [/users/id] User found
+2023-12-30 16:27:52 info: Server is running on Port 3003
+2023-12-30 16:28:25 info: Server is running on Port 3003
+2023-12-30 16:28:35 info: Server is running on Port 3003
+2023-12-30 16:28:46 info: [/regions/show] Listed regions.
+2023-12-30 16:29:07 info: Server is running on Port 3003
+2023-12-30 16:29:30 info: Server is running on Port 3003
+2024-01-08 11:21:40 info: Server is running on Port 3003
+2024-01-08 11:21:40 error: [/regions/create] Internal server error
+2024-01-08 11:21:40 warn: [/regions/id] Region not found.
+2024-01-08 11:21:40 warn: [/regions/id] Region not found.
+2024-01-08 11:21:40 error: [/regions/id] Internal server error
+2024-01-08 11:21:40 error: [/regions/id] Internal server error
+2024-01-08 11:21:40 error: [/regions/id] Internal server error
+2024-01-08 11:21:40 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:21:41 info: [/users/create] User created successfully
+2024-01-08 11:21:42 info: [/users/create] User created successfully
+2024-01-08 11:21:42 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:21:42 error: [/users/show] Unexpected error.
+2024-01-08 11:21:42 error: [/users/id] Unexpected error
+2024-01-08 11:21:42 error: [/users/id] Unexpected error
+2024-01-08 11:21:42 info: [/users/delete] User deleted successfully
+2024-01-08 11:21:42 warn: [/users/delete] User not found
+2024-01-08 11:21:42 error: [/users/delete] Unexpected error
+2024-01-08 11:21:42 error: [/users/delete] Unexpected error
+2024-01-08 11:23:10 info: Server is running on Port 3003
+2024-01-08 11:24:13 info: [/users/show] Listed users
+2024-01-08 11:24:19 info: [/users/show] Listed users
+2024-01-08 11:24:31 info: [/users/create] User created successfully
+2024-01-08 11:24:44 info: [/users/create] User created successfully
+2024-01-08 11:24:47 info: [/users/show] Listed users
+2024-01-08 11:24:55 info: [/users/id] User found
+2024-01-08 11:25:13 info: [/users/show] Listed users
+2024-01-08 11:25:40 info: [/users/update] User updated successfully
+2024-01-08 11:25:44 info: [/users/show] Listed users
+2024-01-08 11:25:59 warn: [/users/update] User not found
+2024-01-08 11:26:12 info: [/users/update] User updated successfully
+2024-01-08 11:26:17 info: [/users/show] Listed users
+2024-01-08 11:26:24 info: [/regions/show] Listed regions.
+2024-01-08 11:26:33 warn: [/regions/id] Region not found.
+2024-01-08 11:26:40 info: [/regions/show] Listed regions.
+2024-01-08 11:27:05 info: [/regions/create] Region created successfully
+2024-01-08 11:27:08 info: [/regions/show] Listed regions.
+2024-01-08 11:27:31 info: [/regions/id - PUT] Region updated successfully
+2024-01-08 11:27:34 info: [/regions/show] Listed regions.
+2024-01-08 11:27:44 info: [/regions/show] Listed regions.
+2024-01-08 11:28:02 warn: [/regions/id] Region not found.
+2024-01-08 11:28:20 warn: [/regions/id] Region not found.
+2024-01-08 11:28:50 warn: [/regions/id] Region not found.
+2024-01-08 11:28:55 warn: [/regions/id] Region not found.
+2024-01-08 11:32:18 warn: [/regions/id] Region not found.
+2024-01-08 11:32:35 info: [/regions/show] Listed regions.
+2024-01-08 11:32:56 warn: [/regions/id] Region not found.
+2024-01-08 11:33:02 warn: [/regions/id] Region not found.
+2024-01-08 11:33:22 warn: [/regions/id] Region not found.
+2024-01-08 11:34:19 warn: [/regions/id] Region not found.
+2024-01-08 11:35:30 warn: [/regions/id] Region not found.
+2024-01-08 11:36:44 info: [/regions/show] Listed regions.
+2024-01-08 11:36:56 info: [/regions/id] Region found
+2024-01-08 11:37:07 warn: [/regions/id] Region not found.
+2024-01-08 11:38:11 warn: [/regions/id] Region not found.
+2024-01-08 11:38:44 info: [/regions/create] Region created successfully
+2024-01-08 11:38:47 info: [/regions/show] Listed regions.
+2024-01-08 11:38:56 info: [/regions/delete/id] User deleted successfully
+2024-01-08 11:38:59 info: [/regions/show] Listed regions.
+2024-01-08 11:39:16 info: [/regions/delete/id] User deleted successfully
+2024-01-08 11:39:19 info: [/regions/show] Listed regions.
+2024-01-08 11:39:24 info: [/regions/delete/id] User deleted successfully
+2024-01-08 11:39:31 info: [/regions/delete/id] User deleted successfully
+2024-01-08 11:39:49 info: [/regions/create] Region created successfully
+2024-01-08 11:40:13 info: [/regions/create] Region created successfully
+2024-01-08 11:40:28 info: [/regions/create] Region created successfully
+2024-01-08 11:40:36 info: [/regions/create] Region created successfully
+2024-01-08 11:40:39 info: [/regions/show] Listed regions.
+2024-01-08 11:40:58 warn: [/regions/id] Region not found.
+2024-01-08 11:41:14 warn: [/regions/id] Region not found.
+2024-01-08 11:41:51 info: Server is running on Port 3003
+2024-01-08 11:41:55 info: Server is running on Port 3003
+2024-01-08 11:42:03 warn: [/regions/id] Region not found.
+2024-01-08 11:42:40 info: Server is running on Port 3003
+2024-01-08 11:42:55 info: Server is running on Port 3003
+2024-01-08 11:43:03 warn: [/regions/id] Region not found.
+2024-01-08 11:43:17 info: Server is running on Port 3003
+2024-01-08 11:43:27 info: Server is running on Port 3003
+2024-01-08 11:44:22 info: Server is running on Port 3003
+2024-01-08 11:44:23 info: Server is running on Port 3003
+2024-01-08 11:44:35 warn: [/regions/id] Region not found.
+2024-01-08 11:44:37 warn: [/regions/id] Region not found.
+2024-01-08 11:45:06 warn: [/regions/id] Region not found.
+2024-01-08 11:45:25 info: [/regions/regionslist] List regions containing point successfully
+2024-01-08 11:45:34 info: [/regions/regionsdistance] List regions within distance successfully
+2024-01-08 11:45:44 info: [/regions/regionsdistance] List regions within distance successfully
+2024-01-08 11:45:54 warn: [/regions/id] Region not found.
+2024-01-08 11:46:39 info: [/regions/id] Region found
+2024-01-08 11:46:47 info: [/users/show] Listed users
+2024-01-08 11:46:57 info: [/users/id] User found
+2024-01-08 11:47:10 info: Server is running on Port 3003
+2024-01-08 11:47:13 info: [/regions/id] Region found
+2024-01-08 11:47:17 warn: [/regions/id] Region not found.
+2024-01-08 11:47:29 info: Server is running on Port 3003
+2024-01-08 11:47:51 info: Server is running on Port 3003
+2024-01-08 11:48:00 info: [/users/show] Listed users
+2024-01-08 11:48:10 info: [/users/id] User found
+2024-01-08 11:49:00 info: Server is running on Port 3003
+2024-01-08 11:49:12 info: Server is running on Port 3003
+2024-01-08 11:49:12 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:49:13 info: [/users/create] User created successfully
+2024-01-08 11:49:14 info: [/users/create] User created successfully
+2024-01-08 11:49:14 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:49:14 error: [/users/show] Unexpected error.
+2024-01-08 11:49:14 error: [/users/id] Unexpected error
+2024-01-08 11:49:14 error: [/users/id] Unexpected error
+2024-01-08 11:49:14 info: [/users/delete] User deleted successfully
+2024-01-08 11:49:14 warn: [/users/delete] User not found
+2024-01-08 11:49:14 error: [/users/delete] Unexpected error
+2024-01-08 11:49:14 error: [/users/delete] Unexpected error
+2024-01-08 11:52:20 info: Server is running on Port 3003
+2024-01-08 11:52:20 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:52:21 info: [/users/create] User created successfully
+2024-01-08 11:52:22 info: [/users/create] User created successfully
+2024-01-08 11:52:22 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:52:22 error: [/users/show] Unexpected error.
+2024-01-08 11:52:22 error: [/users/id] Unexpected error
+2024-01-08 11:52:22 error: [/users/id] Unexpected error
+2024-01-08 11:52:22 info: [/users/delete] User deleted successfully
+2024-01-08 11:52:22 warn: [/users/delete] User not found
+2024-01-08 11:52:22 error: [/users/delete] Unexpected error
+2024-01-08 11:52:22 error: [/users/delete] Unexpected error
+2024-01-08 11:55:04 info: Server is running on Port 3003
+2024-01-08 11:55:04 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:55:05 info: [/users/create] User created successfully
+2024-01-08 11:55:06 info: [/users/create] User created successfully
+2024-01-08 11:56:44 info: Server is running on Port 3003
+2024-01-08 11:56:45 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:56:46 info: [/users/create] User created successfully
+2024-01-08 11:56:47 info: [/users/create] User created successfully
+2024-01-08 11:56:47 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 11:56:47 error: [/users/show] Unexpected error.
+2024-01-08 12:01:52 info: Server is running on Port 3003
+2024-01-08 12:01:52 error: [/users/id] Unexpected error
+2024-01-08 12:01:52 error: [/users/id] Unexpected error
+2024-01-08 12:04:30 info: Server is running on Port 3003
+2024-01-08 12:04:30 error: [/users/id] Unexpected error
+2024-01-08 12:04:30 error: [/users/id] Unexpected error
+2024-01-08 12:20:58 info: Server is running on Port 3003
+2024-01-08 12:20:58 error: [/users/id] Unexpected error
+2024-01-08 12:25:41 info: Server is running on Port 3003
+2024-01-08 12:25:41 error: [/users/id] Unexpected error
+2024-01-08 12:25:41 error: [/users/id] Unexpected error
+2024-01-08 12:27:11 info: Server is running on Port 3003
+2024-01-08 12:27:11 error: [/users/id] Unexpected error
+2024-01-08 12:27:11 error: [/users/id] Unexpected error
+2024-01-08 12:27:37 info: Server is running on Port 3003
+2024-01-08 12:27:38 error: [/users/id] Unexpected error
+2024-01-08 12:27:38 error: [/users/id] Unexpected error
+2024-01-08 12:29:39 info: Server is running on Port 3003
+2024-01-08 12:29:39 error: [/users/id] Unexpected error
+2024-01-08 12:29:53 info: Server is running on Port 3003
+2024-01-08 12:29:53 error: [/users/id] Unexpected error
+2024-01-08 12:31:07 info: Server is running on Port 3003
+2024-01-08 12:31:07 error: [/users/id] Unexpected error
+2024-01-08 12:31:07 info: [/users/delete] User deleted successfully
+2024-01-08 12:31:54 info: Server is running on Port 3003
+2024-01-08 12:31:54 warn: [/users/delete] User not found
+2024-01-08 12:31:54 error: [/users/delete] Unexpected error
+2024-01-08 12:31:54 error: [/users/delete] Unexpected error
+2024-01-08 12:32:35 info: Server is running on Port 3003
+2024-01-08 12:32:35 warn: [/users/delete] User not found
+2024-01-08 12:32:35 error: [/users/delete] Unexpected error
+2024-01-08 12:33:37 info: Server is running on Port 3003
+2024-01-08 12:33:37 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 12:33:38 info: [/users/create] User created successfully
+2024-01-08 12:33:39 info: [/users/create] User created successfully
+2024-01-08 12:33:39 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 12:33:39 error: [/users/id] Unexpected error
+2024-01-08 12:33:39 error: [/users/id] Unexpected error
+2024-01-08 12:33:39 info: [/users/delete] User deleted successfully
+2024-01-08 12:33:39 warn: [/users/delete] User not found
+2024-01-08 12:33:39 error: [/users/delete] Unexpected error
+2024-01-08 12:33:39 error: [/users/delete] Unexpected error
+2024-01-08 12:34:22 info: Server is running on Port 3003
+2024-01-08 12:34:22 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 12:34:23 info: [/users/create] User created successfully
+2024-01-08 12:34:24 info: [/users/create] User created successfully
+2024-01-08 12:34:24 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 12:34:24 error: [/users/id] Unexpected error
+2024-01-08 12:34:24 error: [/users/id] Unexpected error
+2024-01-08 12:34:24 info: [/users/delete] User deleted successfully
+2024-01-08 12:34:24 warn: [/users/delete] User not found
+2024-01-08 12:34:24 error: [/users/delete] Unexpected error
+2024-01-08 12:34:24 error: [/users/delete] Unexpected error
+2024-01-08 12:35:23 info: Server is running on Port 3003
+2024-01-08 12:35:23 error: [/regions/create] Internal server error
+2024-01-08 12:35:23 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:35:23 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:35:23 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:37:19 info: Server is running on Port 3003
+2024-01-08 12:37:19 info: [/regions/show] Listed regions.
+2024-01-08 12:41:53 info: Server is running on Port 3003
+2024-01-08 12:41:53 info: [/regions/show] Listed regions.
+2024-01-08 12:41:53 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 12:41:54 info: [/users/create] User created successfully
+2024-01-08 12:41:55 info: [/users/create] User created successfully
+2024-01-08 12:41:55 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 12:41:55 info: [/users/show] Listed users
+2024-01-08 12:41:55 error: [/users/id] Unexpected error
+2024-01-08 12:41:55 error: [/users/id] Unexpected error
+2024-01-08 12:41:55 info: [/users/delete] User deleted successfully
+2024-01-08 12:41:55 warn: [/users/delete] User not found
+2024-01-08 12:41:55 error: [/users/delete] Unexpected error
+2024-01-08 12:41:55 error: [/users/delete] Unexpected error
+2024-01-08 12:46:23 info: Server is running on Port 3003
+2024-01-08 12:46:37 info: Server is running on Port 3003
+2024-01-08 12:47:53 info: Server is running on Port 3003
+2024-01-08 12:48:13 info: Server is running on Port 3003
+2024-01-08 12:49:35 info: Server is running on Port 3003
+2024-01-08 12:49:35 warn: [/regions/id] Region not found.
+2024-01-08 12:49:50 info: Server is running on Port 3003
+2024-01-08 12:49:50 warn: [/regions/id] Region not found.
+2024-01-08 12:50:43 info: Server is running on Port 3003
+2024-01-08 12:53:18 info: Server is running on Port 3003
+2024-01-08 12:53:18 warn: [/regions/id] Region not found.
+2024-01-08 12:53:57 info: Server is running on Port 3003
+2024-01-08 12:53:57 error: [/regions/id] Internal server error
+2024-01-08 12:54:37 info: Server is running on Port 3003
+2024-01-08 12:54:37 error: [/regions/id] Internal server error
+2024-01-08 12:55:52 info: Server is running on Port 3003
+2024-01-08 12:55:52 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:55:52 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:55:52 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:59:38 info: Server is running on Port 3003
+2024-01-08 12:59:38 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:59:38 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:59:38 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:59:52 info: Server is running on Port 3003
+2024-01-08 12:59:52 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:59:52 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 12:59:52 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:00:04 info: Server is running on Port 3003
+2024-01-08 13:00:04 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:00:04 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:00:04 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:00:58 info: Server is running on Port 3003
+2024-01-08 13:00:58 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:00:58 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:00:58 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:01:36 info: Server is running on Port 3003
+2024-01-08 13:01:36 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:01:36 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:01:36 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:02:17 info: Server is running on Port 3003
+2024-01-08 13:02:17 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:02:17 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:02:17 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:02:42 info: Server is running on Port 3003
+2024-01-08 13:02:42 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:02:42 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:02:42 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:34:19 info: Server is running on Port 3003
+2024-01-08 13:34:19 error: [/regions/create] Internal server error
+2024-01-08 13:34:19 info: [/regions/show] Listed regions.
+2024-01-08 13:34:19 warn: [/regions/id] Region not found.
+2024-01-08 13:34:19 error: [/regions/id] Internal server error
+2024-01-08 13:34:19 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:34:19 warn: [/regions/regionsdistance] Latitude, longitude, and distance are required parameters
+2024-01-08 13:34:19 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 13:34:21 info: [/users/create] User created successfully
+2024-01-08 13:34:21 info: [/users/create] User created successfully
+2024-01-08 13:34:21 warn: [/users/create] Provide only address or coordinates, not both or neither
+2024-01-08 13:34:21 info: [/users/show] Listed users
+2024-01-08 13:34:21 error: [/users/id] Unexpected error
+2024-01-08 13:34:21 error: [/users/id] Unexpected error
+2024-01-08 13:34:21 info: [/users/delete] User deleted successfully
+2024-01-08 13:34:21 warn: [/users/delete] User not found
+2024-01-08 13:34:21 error: [/users/delete] Unexpected error
+2024-01-08 13:34:21 error: [/users/delete] Unexpected error

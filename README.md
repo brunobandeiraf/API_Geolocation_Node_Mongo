@@ -23,11 +23,8 @@ Em um mundo conectado e globalizado, a geolocalização se torna cada vez mais e
 [x] Deve ser possível visualizar regiões a uma certa distância de um ponto
 
 Melhoria:
-- Faltou documentação completa da API (p.e. Swagger).
-- Implementação de monitoramento e análise de logs.
 - Segurança com mongo session.
-- Eslint (escolha pessoal).
-- Frontend da aplicação :(.
+- Dividir os testes unitário e integração.
 
 ## 🛠 **Especificações Técnicas**
 
@@ -91,7 +88,4 @@ Melhoria:
 Estamos ansiosos para ver sua implementação e criatividade em ação! Boa sorte e que a força do código esteja com você! 🚀
 
 ---
-yarn add eslint -D
-uarn eslint --init
 
-yarn add express-async-errors --save
