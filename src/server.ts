@@ -1,64 +1,42 @@
-import * as app from 'express';
-import { UserModel } from './models';
+// import { UserModel } from './repositories/models';
+import 'express-async-errors'
+import { env } from './env'
+import logger from './utils/logs/logger'
 
-const server = app();
-const router = app.Router();
+import express, { Request, Response, NextFunction } from 'express'
+import AppError from '../src/utils/error/AppError'
+import './db/database'
 
-const STATUS = {
-  OK: 200,
-  CREATED: 201,
-  UPDATED: 201,
-  NOT_FOUND: 400,
-  BAD_REQUEST: 400,
-  INTERNAL_SERVER_ERROR: 500,
-  DEFAULT_ERROR: 418,
-};
+import routes from './http/routes'
+import cors from 'cors'
 
-router.get('/user', async (req, res) => {
-  const { page, limit } = req.query;
+const server = express()
+server.use(cors())
+server.use(express.json())
 
-  const [users, total] = await Promise.all([
-    UserModel.find().lean(),
-    UserModel.count(),
-  ]);
+server.use(routes)
 
-  return res.json({
-    rows: users,
-    page,
-    limit,
-    total,
-  });
-});
+// Tratando erros
+// server.use((error: any, request: Request, response: Response, next: NextFunction) => {
+//     // Se erro gerado pelo cliente
+//     if (error instanceof AppError) {
+//       return response.status(error.statusCode).json({
+//         status: 'error',
+//         message: error.message,
+//       });
+//     }
+//     // Debugar o error, se preciso
+//     console.error(error);
 
-router.get('/users/:id', async (req, res) => {
-  const { id } = req.params;
+//     // Se erro gerado pelo servidor
+//     return response.status(500).json({ // Error gerado pelo servidor - mensagem padrão
+//       status: 'error',
+//       message: 'Internal server error',
+//     });
+// });
 
-  const user = await UserModel.findOne({ _id: id }).lean();
-
-  if (!user) {
-    res.status(STATUS.INTERNAL_SERVER_ERROR).json({ message: 'Region not found' });
-  }
-
-  return user;
-});
-
-router.put('/users/:id', async (req, res) => {
-  const { id } = req.params;
-  const { update } = req.body;
-
-  const user = await UserModel.findOne({ _id: id }).lean();
-
-  if (!user) {
-    res.status(STATUS.DEFAULT_ERROR).json({ message: 'Region not found' });
-  }
-
-  user.name = update.name;
-
-  await user.save();
-
-  return res.sendStatus(201);
-});
-
-server.use(router);
-
-export default server.listen(3003);
+const PORT = env.PORT
+export default server.listen(PORT, () =>
+  logger.info(`Server is running on Port ${PORT}`),
+)
+// export default server.listen(PORT, () => console.log(`Server is running on Port ${PORT}`))

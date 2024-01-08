@@ -6,6 +6,26 @@ Olá desenvolvedor(a)! Bem-vindo(a) ao Desafio Técnico do OZmap. Este é um pro
 
 Em um mundo conectado e globalizado, a geolocalização se torna cada vez mais essencial. E aqui no OZmap, buscamos sempre otimizar e melhorar nossos sistemas. Assim, você encontrará um protótipo que precisa de sua experiência para ser corrigido, melhorado e levado ao próximo nível.
 
+## 🔍 **Requisitos Funcionais - implementados**
+[x] Deve ser possível criar um usuário informando nome, email e endereço. 
+[x] Deve ser possível criar um usuário informando nome, email e coordenadas.
+[x] Deve ser possível editar um usuário (independente de ter informado endereço ou coordenada).
+[x] Deve ser possível visualizar um único usuário.
+[x] Deve ser possível excluir o usuário criado.
+[x] Deve ser possível listar todos os usuários cadastrados.
+[x] Deve ser possível criar uma região informando nome, coordenadas e um usuário dono da região. 
+[x] Deve ser possível editar uma região. 
+[x] Deve ser possível excluir uma região. 
+[x] Deve ser possível visualizar um única região.
+[x] Deve ser possível deletar uma região. 
+[x] Deve ser possível listar todas as regiões cadastradas. 
+[x] Deve ser possível visualizar listar regiões contendo um ponto específico.
+[x] Deve ser possível visualizar regiões a uma certa distância de um ponto
+
+Melhoria:
+- Segurança com mongo session.
+- Dividir os testes unitário e integração.
+
 ## 🛠 **Especificações Técnicas**
 
 - **Node.js**: Versão 20 ou superior.
@@ -66,3 +86,6 @@ Em um mundo conectado e globalizado, a geolocalização se torna cada vez mais e
 ---
 
 Estamos ansiosos para ver sua implementação e criatividade em ação! Boa sorte e que a força do código esteja com você! 🚀
+
+---
+
